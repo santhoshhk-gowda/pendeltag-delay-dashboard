@@ -25,6 +25,10 @@ if uploaded_file:
     selected_days = st.multiselect("Select Day(s) of Week (0=Mon, 6=Sun):", sorted(days), default=sorted(days))
 
     filtered_df = df[df['station_name'].isin(selected_stations) & df['day_of_week'].isin(selected_days)]
+    st.write("Average Delay (All):", df['delay_min'].mean())
+    st.write("Average Delay (Filtered):", filtered_df['delay_min'].mean())
+    st.write("Max Delay Observed:", df['delay_min'].max())
+
 
     # Show data preview
     st.markdown(f"### Showing {len(filtered_df)} rows")
