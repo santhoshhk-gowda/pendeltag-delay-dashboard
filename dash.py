@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # App title
 st.set_page_config(page_title="Pendeltåg Delay Dashboard", layout="wide")
-st.title("🚆 Pendeltåg Delay Dashboard")
+st.title(" Pendeltåg Delay Dashboard")
 st.markdown("Upload your Pendeltåg CSV file to explore delays by station and day.")
 
 # Upload CSV
@@ -31,7 +31,7 @@ if uploaded_file:
     st.dataframe(filtered_df[['station_name', 'scheduled', 'expected', 'delay_min', 'is_delayed', 'day_of_week', 'hour']].head(20))
 
     # --- Delay Histogram ---
-    st.subheader("📊 Delay Distribution (in Minutes)")
+    st.subheader(" Delay Distribution (in Minutes)")
     fig, ax = plt.subplots()
     ax.hist(filtered_df['delay_min'].dropna(), bins=30, edgecolor='black')
     ax.set_xlabel("Delay (minutes)")
@@ -39,17 +39,17 @@ if uploaded_file:
     st.pyplot(fig)
 
     # --- Average Delay Over Time ---
-    st.subheader("📈 Average Delay Over Time")
+    st.subheader(" Average Delay Over Time")
     delay_trend = filtered_df.groupby('date')['delay_min'].mean()
     st.line_chart(delay_trend)
 
     # --- Top Delayed Stations ---
-    st.subheader("🏆 Top Stations by Average Delay")
+    st.subheader(" Top Stations by Average Delay")
     top_avg = filtered_df.groupby('station_name')['delay_min'].mean().sort_values(ascending=False).head(10)
     st.bar_chart(top_avg)
 
     # --- Delay Summary ---
-    st.subheader("📌 Delay Summary")
+    st.subheader(" Delay Summary")
     total = len(filtered_df)
     delayed = filtered_df['is_delayed'].sum()
     avg_delay = filtered_df['delay_min'].mean()
