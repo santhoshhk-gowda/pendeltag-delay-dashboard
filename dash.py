@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # App title
 st.set_page_config(page_title="Pendeltåg Delay Dashboard", layout="wide")
 st.title(" Pendeltåg Delay Dashboard")
-st.markdown("Upload your Pendeltåg CSV file to explore delays by station and day.")
+#st.markdown("Upload your Pendeltåg CSV file to explore delays by station and day.")
 
 # Upload CSV
 uploaded_file = st.file_uploader("C:/Users/santhosh k/Desktop/Project/data/pendetag_combined", type=["csv"])
